@@ -1,5 +1,10 @@
 from django.shortcuts import render
+#from .xx    .=samassa folderissa kuin tämä tiedosto
+from .models import Post
 
+#dummy data jos haluat testata ilman model/databasea
+#home(request) pitää olla context = { 'posts':posts}  jotta se linkkaa ton oikein
+'''
 posts = [
 	{
 		'author': 'Janne K',
@@ -15,12 +20,14 @@ posts = [
 	}
 
 ]
+'''
+
 
 def home(request):
 	#context = dictionary mikä ottaa ton posts listan vastaan (sis dictionaryja postauksista)
 	#key = 'posts'   ja value on se lista niistä postauksista
 	context = {
-		'posts': posts
+		'posts': Post.objects.all()
 	}
 	#return HttpResponse('<h1>home lol</h1>')   näin voit kirjoittaa suoraan HTML:ää
 	#return render(request, 'tähän se tiedosto tuolta templates kansion alta')   näin voit käyttää templateja

@@ -13,7 +13,11 @@ koodi   block content ... endblock   kohtaan  -->
 		  <div class="media-body">
 		    <div class="article-metadata">
 		      <a class="mr-2" href="#">{{ post.author }}</a>
-		      <small class="text-muted">{{ post.date_posted }}</small>
+		      <!-- https://docs.djangoproject.com/en/3.0/ref/templates/builtins/#date 
+				post.date_posted                default     Feb. 11, 2021, 10:31 a.m.
+				post.date_posted|date:"j.n.Y"   filter      11.2.2021
+		      -->
+		      <small class="text-muted">{{ post.date_posted|date:"j.n.Y" }}</small>
 		    </div>
 		    <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
 		    <p class="article-content">{{ post.content }}</p>
