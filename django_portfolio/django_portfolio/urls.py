@@ -15,10 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from users import views as user_views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('register/', user_views.register, name='register'),
     #include = chops off what ever part of URL has matched until this point and only sends forward the to URLs.py (blog kansiosta)
     path('', include('blog.urls')),
+    
 ]

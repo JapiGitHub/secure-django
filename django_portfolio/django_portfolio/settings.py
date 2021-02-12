@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     #templates kohdassa lisätty
     #appi/kansio = blog -> apps.py -> class BlogConfig(AppConfig):    
     'blog.apps.BlogConfig',
+    #usersapp = registration etc.    class UsersConfig(AppConfig): in users\apps.py
+    'users.apps.UsersConfig',
 
     'django.contrib.admin',
     'django.contrib.auth',
