@@ -4,14 +4,17 @@ from django.shortcuts import render, redirect
 #jälkeen "account created!", mut jos päivitat sen home sivun, ni viesti katoaa
 from django.contrib import messages
 
-
 #formit on classeja mitkä convertoituu html:ksi
-from django.contrib.auth.forms import UserCreationForm
+#tätä ei enää tarvittu kun teimme UserRegisterFormin mikää inheritoi tämän ja lisäksi myös siinä on email jne.
+#from django.contrib.auth.forms import UserCreationForm
+
+from .forms import UserRegisterForm
+
 
 def register(request):
 	# POST viittaa http request tyyppiin (POST vs GET).     register.html : <form method="POST">
 	if request.method == 'POST':
-		form = UserCreationForm(request.POST)
+		form = UserRegisterForm(request.POST)
 		# post data on todnäk tosta meidän regestration formista, mutta ei pakosti, eli se pitää tarkistaa
 		#is_valid() = backend testing: passwords match, ei käytössä oleva username etc printtaa myös error messages
 		if form.is_valid():
@@ -25,5 +28,5 @@ def register(request):
 			#blog/urls.py : path('', views.home, name='blog-home'),
 			return redirect('blog-home')
 	else:
-		form = UserCreationForm()
+		form = UserRegisterForm()
 	return render(request, 'users/register.html', {'form': form})

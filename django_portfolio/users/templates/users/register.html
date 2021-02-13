@@ -1,4 +1,6 @@
 {% extends "blog/base.html" %}
+<!-- { form|crispy  pitää myös lisätä! -->
+{% load crispy_forms_tags %}
 {% block content %}
 	<div class="content-section">
 		<!--  POST: on kahdenlaisia HttpRequesteja
@@ -13,7 +15,7 @@
 				<legend class="border-bottom mb-4">Join Today</legend>
 				<!-- form printaa variablen kokonaan, labes, fields etc 
 					.as_p = render in Paragraph style, eli nätimpi-->
-				{{ form.as_p }}
+				{{ form|crispy }}
 			</fieldset>
 			<div class="form-group">
 				<button class="btn btn-outline-info" type="submit">Sign Up</button>

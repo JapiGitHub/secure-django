@@ -36,6 +36,10 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     #usersapp = registration etc.    class UsersConfig(AppConfig): in users\apps.py
     'users.apps.UsersConfig',
+    #crispy form styling. 
+    #tän tiedoston lopussa on myös että käyttää bootstrap4
+    #lisäksi sinne html tiedostoon ylös { % load crispy_forms_tags
+    'crispy_forms',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -124,3 +128,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
