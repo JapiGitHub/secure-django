@@ -1,0 +1,7 @@
+{% extends "blog/base.html" %}
+<!-- { form|crispy  pitää myös lisätä! -->
+{% load crispy_forms_tags %}
+{% block content %}
+	<!-- user variable ei tarvi työntää mistään vaan se on built-in djangossa valmiina = current logged in user-->
+	<h1>{{ user.username }}</h1>
+{% endblock content %}

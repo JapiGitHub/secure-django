@@ -10,6 +10,9 @@ from django.contrib import messages
 
 from .forms import UserRegisterForm
 
+from django.contrib.auth.decorators import login_required
+
+
 
 def register(request):
 	# POST viittaa http request tyyppiin (POST vs GET).     register.html : <form method="POST">
@@ -23,10 +26,15 @@ def register(request):
 			#form.cleaned_data = dictionary. converted to python types from form and validated tossa ylempänä
 			username = form.cleaned_data.get('username')
 			#muista lisätä base templateen tuki messagessille
-			messages.success(request, f'Account created for {username}!')
+			messages.success(request, f'Your account has been created! You are now able to log in.')
 			#redirect  lähettää userin nyt onnistuneen rekisteröinnin jälkeen blog-home sivulle
 			#blog/urls.py : path('', views.home, name='blog-home'),
-			return redirect('blog-home')
+			return redirect('login')
 	else:
 		form = UserRegisterForm()
 	return render(request, 'users/register.html', {'form': form})
+
+
+@login_required
+def profile(request):
+	return render(request, 'users/profile.html')

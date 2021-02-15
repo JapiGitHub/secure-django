@@ -130,3 +130,13 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+#kun login on onnistunut, niin suuntaa tonne. 
+#default ilman tätä riviä olisi:    Request Method: GET    Request URL: http://127.0.0.1:8000/accounts/profile/
+LOGIN_REDIRECT_URL = 'blog-home'
+
+#defaulttina olis   /accounts/login/?next=/profile/    eli error 404
+#login viewiin on sisäänrakennettu muistamaan minne yritit. esim yrität mennä /profile sivulle ulos-kirjautuneena, niin 
+#se ohjaa sut login sivulle, mutta muistaa, että ohjaa sut onnistuneen kirjautumisen jälkeen profile sivulle!
+#http://127.0.0.1:8000/login/?next=/profile/    <- next profile
+LOGIN_URL ='login'
