@@ -17,6 +17,11 @@ from django.contrib import admin
 #import as  koska kun importtaat viewssejä, niin on hyvä merkta ne, että mitä ne on as ____. näin ne nimet ei ole päällekkäin. esim alempi user_views vs auth_views
 from django.contrib.auth import views as auth_views
 from django.urls import path, include
+
+#urls esimerkiksi profile pic varten (profile.html:  {{ user.profile.image.url }})
+from django.conf import settings
+from django.conf.urls.static import static
+
 from users import views as user_views
 
 urlpatterns = [
@@ -32,3 +37,11 @@ urlpatterns = [
     path('', include('blog.urls')),
     
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+
+
+

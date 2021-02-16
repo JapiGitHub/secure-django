@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -126,8 +127,14 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-
 STATIC_URL = '/static/'
+
+#täällä on kaikki uploadatut kuvat jne. ne ei voi olla databaseissa koska se ois liian hidasta
+#BASE_DIR = projects base direcory, ja media on sen alakansio.   os.path jotta millä vaan käyttiksellä toimii
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+#public URL of media directory. how we are going to access from browser
+MEDIA_URL = '/media/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
