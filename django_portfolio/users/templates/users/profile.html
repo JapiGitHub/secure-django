@@ -12,7 +12,23 @@
 	      <p class="text-secondary">{{ user.email }}</p>
 	    </div>
 	  </div>
-	  <!-- FORM HERE -->
+	  <!-- enctype : tää pitää olla jotta special encoding toimii kuvien kanssa! muuten ei pass image data properly ja vaikea löytää bugia -->
+	  <form method="POST" enctype="multipart/form-data">
+			<!-- CSRF-token = cross site reforgery token. protect against attacks!  -->
+			{% csrf_token %}
+			<fieldset class="form-group">
+				<!-- form group = (bootsrap) group related elements in form
+				border-bottom mb-4 = bootstrap styles -->
+				<legend class="border-bottom mb-4">Profile Info</legend>
+				<!-- form printaa variablen kokonaan, labes, fields etc 
+					.as_p = render in Paragraph style, eli nätimpi-->
+				{{ u_form|crispy }}
+				{{ p_form|crispy }}
+			</fieldset>
+			<div class="form-group">
+				<button class="btn btn-outline-info" type="submit">Update</button>
+			</div>
+		</form>
 	</div>
 {% endblock content %}
 

@@ -8,7 +8,7 @@ from django.contrib import messages
 #tätä ei enää tarvittu kun teimme UserRegisterFormin mikää inheritoi tämän ja lisäksi myös siinä on email jne.
 #from django.contrib.auth.forms import UserCreationForm
 
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 
 from django.contrib.auth.decorators import login_required
 
@@ -37,4 +37,25 @@ def register(request):
 
 @login_required
 def profile(request):
-	return render(request, 'users/profile.html')
+	if request.method == 'POST':
+		#..Form(instance=request.user)  =  tällä saadaan täyttämään muokattavat kentät tämän hetken arvoilla, esim username ja email kohtiin. populate forms with the current users info  
+		u_form = UserUpdateForm(request.POST, instance=request.user) #request.POST = pass the POST data.  instance = username ja email
+		p_form = ProfileUpdateForm(request.POST,
+									request.FILES,
+									instance=request.user.profile) #request.FILES = kuvatiedosto.   instance = current avatar image
+		if u_form.is_valid() and p_form.is_valid():
+			u_form.save()
+			p_form.save()
+			messages.success(request, f'Your account has been updated!')
+			#tässä kannattaa tehdä redirect jotta ei tuu sitä "jos päivität ni haluatko uudestaan submit tiedot?" 
+			#= post get redirect pattern: redirect aiheuttaa, ettei lähetetäkkään enää POST vaan GET -> no weird message
+			return redirect('profile')
+	else:
+		u_form = UserUpdateForm(instance=request.user) #username ja email
+		p_form = ProfileUpdateForm(instance=request.user.profile) #current avatar image
+	
+	context = {
+		'u_form': u_form,
+		'p_form': p_form
+	}
+	return render(request, 'users/profile.html', context)
