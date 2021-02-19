@@ -39,6 +39,7 @@ def register(request):
 def profile(request):
 	if request.method == 'POST':
 		#..Form(instance=request.user)  =  tällä saadaan täyttämään muokattavat kentät tämän hetken arvoilla, esim username ja email kohtiin. populate forms with the current users info  
+		#jos instancet on väärin, niin saattaa tehdä vaan uusia usereita vanhan päivittämisen sijaan. admin sivulta on helppo tarkistaa.
 		u_form = UserUpdateForm(request.POST, instance=request.user) #request.POST = pass the POST data.  instance = username ja email
 		p_form = ProfileUpdateForm(request.POST,
 									request.FILES,

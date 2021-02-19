@@ -1,0 +1,22 @@
+{% extends "blog/base.html" %}
+{% block content %}
+	<div class="content-section">
+		<!--  POST: on kahdenlaisia HttpRequesteja
+		get  request: navigating pages normally
+		POST request: lähettää input datan jonnekkin -->
+		<form method="POST">
+			<!-- CSRF-token = cross site reforgery token. protect against attacks!  -->
+			{% csrf_token %}
+			<fieldset class="form-group">
+				<!-- form group = (bootsrap) group related elements in form
+				border-bottom mb-4 = bootstrap styles -->
+				<legend class="border-bottom mb-4">Delete post</legend>
+				<h2>Are you sure you want to delete the post {{ object.title }}</h2>
+			</fieldset>
+			<div class="form-group">
+				<button class="btn btn-outline-danger" type="submit">Yes, Delete</button>
+				<a class="btn btn-outline-secondary" href="{% url 'post-detail' object.id %}">Cancel</a>
+			</div>
+		</form>
+	</div>
+{% endblock content %}

@@ -1,0 +1,27 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<!-- extends = hae pohja/runko html sivuun base.html:stä ja liitä alla oleva
+koodi   block content ... endblock   kohtaan  
+
+TÄMÄ TIEDOSTON POHJA ON KOPIOIT HOME.HTML:Stä.
+siinä oli aina post.author.profile.... post.date_posted.... jne piti muuttaa object.author.. post->object
+koska DetailViews odottaa, että context on objecti
+-->
+
+	<article class="media content-section">
+	  <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}">
+	  <div class="media-body">
+	    <div class="article-metadata">
+	      <a class="mr-2" href="#">{{ object.author }}</a>
+	      <!-- https://docs.djangoproject.com/en/3.0/ref/templates/builtins/#date 
+			post.date_posted                default     Feb. 11, 2021, 10:31 a.m.
+			post.date_posted|date:"j.n.Y"   filter      11.2.2021
+	      -->
+	      <small class="text-muted">{{ object.date_posted|date:"j.n.Y" }}</small>
+	    </div>
+	    <h2 class="article-title">{{ object.title }}</h2>
+	    <p class="article-content">{{ object.content }}</p>
+	  </div>
+	</article>
+
+{% endblock content %}

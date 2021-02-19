@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 # Create your models here.
 
@@ -27,3 +28,9 @@ class Post(models.Model):
 
 	def __str__(self):
 		return self.title
+
+	#redirect vs reverse
+	#redirect heittää sut jonnekkin specific routeen     redirect('paikka')
+	#reverse simply returns the full url to that route as a string  
+	def get_absolute_url(self):
+		return reverse('post-detail', kwargs={'pk': self.pk})

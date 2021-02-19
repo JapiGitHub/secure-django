@@ -1,0 +1,25 @@
+{% extends "blog/base.html" %}
+<!-- { form|crispy  pitää myös lisätä! -->
+{% load crispy_forms_tags %}
+{% block content %}
+	<div class="content-section">
+		<!--  POST: on kahdenlaisia HttpRequesteja
+		get  request: navigating pages normally
+		POST request: lähettää input datan jonnekkin -->
+		<form method="POST">
+			<!-- CSRF-token = cross site reforgery token. protect against attacks!  -->
+			{% csrf_token %}
+			<fieldset class="form-group">
+				<!-- form group = (bootsrap) group related elements in form
+				border-bottom mb-4 = bootstrap styles -->
+				<legend class="border-bottom mb-4">Blog post</legend>
+				<!-- form printaa variablen kokonaan, labes, fields etc 
+					.as_p = render in Paragraph style, eli nätimpi-->
+				{{ form|crispy }}
+			</fieldset>
+			<div class="form-group">
+				<button class="btn btn-outline-info" type="submit">Post</button>
+			</div>
+		</form>
+	</div>
+{% endblock content %}

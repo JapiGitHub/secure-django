@@ -20,7 +20,9 @@ koodi   block content ... endblock   kohtaan  -->
 		      -->
 		      <small class="text-muted">{{ post.date_posted|date:"j.n.Y" }}</small>
 		    </div>
-		    <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+		    <!-- {% url 'post-detail' post.id %}  = vastaava kuin urls.py:  path('post/<int:pk>/',...
+		     = esim /post/3/ -->
+		    <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
 		    <p class="article-content">{{ post.content }}</p>
 		  </div>
 		</article>
