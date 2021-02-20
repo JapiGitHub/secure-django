@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 #@login_required decorator oli function based viewseissä, mutta class basedeihin tarvii tän
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.models import User
 from django.views.generic import (
 	ListView, 
 	DetailView, 
@@ -69,6 +70,29 @@ class PostListView(ListView):
 	#date_posted 	oldest to newest
 	#-dated_posted  newest up
 	ordering = ['-date_posted']
+
+	#sivuttaa postaukset ettei kaikki ole allekkain.
+	#pelkällä tällä jo toimii sivutus, mutta et pääse sivuille
+	#muutakuin kirjoittamalla itse queryn URLiin:
+	# http://127.0.0.1:8000/?page=2
+	#sivunapit on home.html:ssä
+	paginate_by = 7
+
+class UserPostListView(ListView):
+	model = Post
+	template_name = 'blog/user_posts.html'
+	context_object_name = 'posts'
+	#kuinka monta postausta per sivu
+	paginate_by = 7
+
+	#override get_queryset jotta saadaan jokaiselle userille oma sivu 
+	def get_queryset(self):
+		#jos objecti löytyy, niin get. jos ei niin return 404
+		#self.kwargs... = ottaa tiedon siitä URLista
+		user = get_object_or_404(User, username=self.kwargs.get('username'))
+		#näytä vain postaukset joissa author on kyseinen useri
+		#ordering = ['-date_posted']  on tässä laitettu tonne .order_by. mutta täysin sama idea kuin PostListView:ssä
+		return Post.objects.filter(author=user).order_by('-date_posted')
 
 class PostDetailView(DetailView):
 	model = Post

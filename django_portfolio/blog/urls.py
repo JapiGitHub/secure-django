@@ -4,7 +4,8 @@ from .views import (
 	PostDetailView, 
 	PostCreateView, 
 	PostUpdateView,
-	PostDeleteView)
+	PostDeleteView,
+	UserPostListView)
 #. = current Dir    eli importtaa ton views.py blog kansiosta
 from . import views
 
@@ -13,6 +14,8 @@ urlpatterns = [
 	#views.home = views.py -> func home
 	#.as_view() = because it has to be converted to actual view
     path('', PostListView.as_view(), name='blog-home'),
+    #
+    path('user/<str:username>', UserPostListView.as_view(), name='user-posts'),
     #<int:pk>  = only accept integer(kukaan ei voi laittaa esim stringiä tähän):PrimaryKey databasesta = 
     #esim : http://127.0.0.1:8000/post/1/
     path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail'),

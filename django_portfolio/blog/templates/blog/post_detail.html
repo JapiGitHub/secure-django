@@ -12,7 +12,7 @@ koska DetailViews odottaa, että context on objecti
 	  <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}">
 	  <div class="media-body">
 	    <div class="article-metadata">
-	      <a class="mr-2" href="#">{{ object.author }}</a>
+	      <a class="mr-2" href="{% url 'user-posts' object.author.username %}">{{ object.author }}</a>
 	      <!-- https://docs.djangoproject.com/en/3.0/ref/templates/builtins/#date 
 			post.date_posted                default     Feb. 11, 2021, 10:31 a.m.
 			post.date_posted|date:"j.n.Y"   filter      11.2.2021
