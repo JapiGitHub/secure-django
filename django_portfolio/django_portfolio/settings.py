@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 
+#.env   gitignored file.
+from decouple import config
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,7 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '(v1o6k!i)uv_z@do1f*0+!r0y4kq68^wnn!v!a^bp*51pta%cz'
+#used to make hashes. but unlike salt, this is not seen by everyone.
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -147,3 +151,13 @@ LOGIN_REDIRECT_URL = 'blog-home'
 #se ohjaa sut login sivulle, mutta muistaa, että ohjaa sut onnistuneen kirjautumisen jälkeen profile sivulle!
 #http://127.0.0.1:8000/login/?next=/profile/    <- next profile
 LOGIN_URL ='login'
+
+#SMTP mail config
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+#TLS on parempi kuin SSL mutta perustuu siihe samaan
+EMAIL_USE_TLS = True
+#decoupled to .env file
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')

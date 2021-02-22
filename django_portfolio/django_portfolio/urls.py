@@ -33,6 +33,31 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
     #jos jätät logouttiin tyhjäksi   as_view(),  niin logout toimii, mutta näyttää admin sivun logouttia xD
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
+    
+    #password reset route
+    #Allows a user to reset their password by generating a one-time use link that can be used to reset the password, and sending that link to the user’s registered email address.
+    #If the email address provided does not exist in the system, this view won’t send an email, but the user won’t receive any error message either. This prevents information leaking to potential attackers.
+    path('password-reset/',
+        auth_views.PasswordResetView.as_view(template_name='users/password_reset.html'),
+        name='password-reset'),
+    #kun password on resetoitu succesfully and email has been sent:
+    path('password-reset/done/',
+        auth_views.PasswordResetDoneView.as_view(template_name='users/password_reset_done.html'),
+        name='password_reset_done'),
+    #Presents a form for entering a new password.
+    #ilman tätä confirmia antaa tälläsen errorin: NoReverseMatch at /password-reset/   : Reverse for 'password_reset_confirm' not found
+    #{{ protocol }}://{{ domain }}{% url 'password_reset_confirm' uidb64=uid token=token %}
+    #  uidb64 = id encoded in base64
+    #   esim:  janne  =   amFubmU=
+    #  token = token to check that the password is valid
+    path('password-reset-confirm/<uidb64>/<token>/',
+        auth_views.PasswordResetConfirmView.as_view(template_name='users/password_reset_confirm.html'),
+        name='password_reset_confirm'),
+
+    path('password-reset-complete/',
+        auth_views.PasswordResetCompleteView.as_view(template_name='users/password_reset_complete.html'),
+        name='password_reset_complete'),
+
     #include = chops off what ever part of URL has matched until this point and only sends forward the to URLs.py (blog kansiosta)
     path('', include('blog.urls')),
     

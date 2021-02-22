@@ -1,1 +1,4 @@
 # created by virtualenv automatically
+#git status --ignored   näyttää listan näistä
+django_portfolio/.env
+.env
