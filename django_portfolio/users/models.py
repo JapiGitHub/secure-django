@@ -23,9 +23,14 @@ class Profile(models.Model):
 		return f'{self.user.username} Profile'
 
 	#override the save method jotta saamme resize profile pics to server.
-	def save(self):
+	def save(self, *args, **kwargs):
+		#*args = ihan sama kuinka monta argumenttia tulee, tää ottaa vastaan LISTANA.
+		#**kwargs = A keyword argument is where you provide a name to the variable as you pass it into the function. 
+		# tää on periaatteessa DICTIONARY jossa on key ja value. jotain=xxx
+		#we need to accept any other arguemnts that out parent class is sending args, etc
+		
 		#parent classes (super) save method is run first
-		super().save()
+		super().save(*args, **kwargs)
 		#grab the (super/parent class) saved pic and resize it.
 		#Image tulee Pillowin kautta
 		img = Image.open(self.image.path)

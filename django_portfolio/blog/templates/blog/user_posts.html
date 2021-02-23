@@ -32,8 +32,6 @@ koodi   block content ... endblock   kohtaan  -->
 		</article>
 	{% endfor %}
 
-	{% import os %}
-	{% print(os.environ.get('DJ_EMAIL_USER')) %}
 	<!-- PAGINATION: napit: first, previous, 4,5,6,7,8, next, last -->
 	{% if is_paginated %}
 		<!-- page_obj tarkoittaa kyseistä sivua paginationissa.
