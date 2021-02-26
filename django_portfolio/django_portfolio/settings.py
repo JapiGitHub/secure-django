@@ -12,9 +12,13 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+import json
+#json toimi tässä kohtaa python-decouple ideana erottaen salasanat gitistä. dictionary
+with open('/etc/config.json') as config_file:
+    config = json.load(config_file)
 
 #.env   gitignored file.
-from decouple import config
+from decouple import config, Csv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,9 +34,9 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-#ALLOWED_HOSTS = [config('ALLOWED_HOSTS')]
-
+#ALLOWED_HOSTS = []
+#toi cast Csv tarvitaan jotta saadaan lista tästä. sitä django odottaa!
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default=[], cast=Csv())
 
 # Application definition
 
@@ -160,6 +164,6 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 #TLS on parempi kuin SSL mutta perustuu siihe samaan
 EMAIL_USE_TLS = True
-#decoupled to .env file
+#decoupled to .env file earlier. nykyään käytämmä json fileä etc kansiosta
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')

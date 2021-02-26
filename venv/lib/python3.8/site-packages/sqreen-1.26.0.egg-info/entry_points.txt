@@ -1,0 +1,3 @@
+[console_scripts]
+sqreen-start = sqreen.bin.protect:protect
+
