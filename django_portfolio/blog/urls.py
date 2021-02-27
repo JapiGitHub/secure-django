@@ -23,6 +23,8 @@ urlpatterns = [
     path('post/<int:pk>/update/', PostUpdateView.as_view(), name='post-update'),
     path('post/<int:pk>/delete/', PostDeleteView.as_view(), name='post-delete'),
     path('about/', views.about, name='blog-about'),
+    path('to-do/', views.to_do, name='blog-to-do'),
+    path('gitlog', views.gitlog, name='blog-gitlog'),
 ]
 
 #template naming millä ajango etsii:

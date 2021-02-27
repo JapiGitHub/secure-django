@@ -149,3 +149,12 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 def about(request):
 	return render(request, 'blog/about.html', {'title':'About'})
+
+def to_do(request):
+        return render(request, 'blog/to-do.html', {'title':'To-Do'})
+
+def gitlog(request):
+        return render(request, 'blog/gitlog.html', {'title':'Git Log'})
+
+
+
