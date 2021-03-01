@@ -159,3 +159,5 @@ def gitlog(request):
 def admin(request):
 	return render(request, 'admin/')
 
+def ctf(request):
+	return render(request, 'blog/ctf.html', {'title':'CTF'})

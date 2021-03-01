@@ -26,6 +26,7 @@ urlpatterns = [
     path('to-do/', views.to_do, name='blog-to-do'),
     path('gitlog/', views.gitlog, name='blog-gitlog'),
     path('admin/', views.admin, name='admin'),
+    path('ctf/', views.ctf, name='blog-ctf'),
 ]
 
 #template naming millä ajango etsii:
