@@ -156,5 +156,6 @@ def to_do(request):
 def gitlog(request):
         return render(request, 'blog/gitlog.html', {'title':'Git Log'})
 
-
+def admin(request):
+	return render(request, 'admin/')
 

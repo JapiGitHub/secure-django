@@ -24,7 +24,8 @@ urlpatterns = [
     path('post/<int:pk>/delete/', PostDeleteView.as_view(), name='post-delete'),
     path('about/', views.about, name='blog-about'),
     path('to-do/', views.to_do, name='blog-to-do'),
-    path('gitlog', views.gitlog, name='blog-gitlog'),
+    path('gitlog/', views.gitlog, name='blog-gitlog'),
+    path('admin/', views.admin, name='admin'),
 ]
 
 #template naming millä ajango etsii:
