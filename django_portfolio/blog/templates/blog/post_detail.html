@@ -24,7 +24,11 @@ koska DetailViews odottaa, että context on objecti
 	      {% endif %}
 	    </div>
 	    <h2 class="article-title">{{ object.title }}</h2>
-	    <p class="article-content">{{ object.content }}</p>
+	    {% if post.author.is_superuser %}
+		<p class="article-content">{{ object.content|safe }}</p>
+	    {% else %}
+		<p class="article-content">{{ object.content }}</p>
+	    {% endif %}	
 	  </div>
 	</article>
 
