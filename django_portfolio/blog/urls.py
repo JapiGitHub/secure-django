@@ -14,7 +14,8 @@ urlpatterns = [
 	#views.home = views.py -> func home
 	#.as_view() = because it has to be converted to actual view
     path('', PostListView.as_view(), name='blog-home'),
-    #
+    #path('', views.homeViews, name='blog-home'),
+    #path('base/', PostSideListView.as_view(), name='blog-base'),
     path('user/<str:username>', UserPostListView.as_view(), name='user-posts'),
     #<int:pk>  = only accept integer(kukaan ei voi laittaa esim stringiä tähän):PrimaryKey databasesta = 
     #esim : http://127.0.0.1:8000/post/1/

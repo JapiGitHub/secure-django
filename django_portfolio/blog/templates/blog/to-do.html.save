@@ -4,12 +4,10 @@
         <small class="text-muted">By Janne K</small>
 
         <p class="article-title">
-        To-Do List:<br>
-		<br>
-		<b>gmail</b> password reseting working again!<br>
-		<b>containerize</b><br>
+                To-Do List:<br>
+		<b		<b>containers</b><br>
 		<b>Sqreen</b> pitää saada taas toimimaan takaisin. muista vaihtaa myös passut<br>
 		<b>CI/CD</b><br>
-		<b></b><br>
+		<b>content</b> siirrä omat random sec notes tänne<br>
         </p>
 {% endblock content %}

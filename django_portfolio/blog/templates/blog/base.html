@@ -4,7 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+	<!-- favicon eli sivun iconi -->
+	<link rel="shortcut icon" href="{% static 'favicon.ico' type='image/x-icon' %}">
+	
 	<!-- BOOTSTRAP  -->
 	<!-- Required meta tags -->
     <meta charset="utf-8">
@@ -32,11 +34,11 @@
 	      <div class="collapse navbar-collapse" id="navbarToggle">
 	        <div class="navbar-nav mr-auto align-text-bottom">
 	          <a class="nav-item nav-link" href="{% url 'blog-home' %}">Home</a>
-		  <a class="nav-item nav-link" href="{% url 'blog-ctf' %}">CTF</a>
+		  <!-- <a class="nav-item nav-link" href="{% url 'blog-ctf' %}">CTF</a> -->
 	          <a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a>
-		  <a class="nav-item nav-link" href="{% url 'blog-to-do' %}">To-Do</a>
-		  <a class="nav-item nav-link" href="{% url 'blog-gitlog' %}">Git Log</a>
-		  <a class="nav-item nav-link text-monospace" href="{% url 'admin' %}">admin</a>
+		  	  <a class="nav-item nav-link" href="{% url 'blog-to-do' %}">To-Do</a>
+		  	  <a class="nav-item nav-link" href="{% url 'blog-gitlog' %}">Git Log</a>
+		  	  <a class="nav-item nav-link text-monospace" href="{% url 'admin' %}">admin</a>
 	        </div>
 	        <!-- Navbar Right Side -->
 	        <div class="navbar-nav">
@@ -63,7 +65,8 @@
 	    			{{ message }}
 	    		</div> 	
 	      	{% endfor %}
-	      {% endif %}		
+	      {% endif %}	
+	      	
 	      {% block content %}{% endblock %}
 	    </div>
 	    <div class="col-md-4">
@@ -75,6 +78,17 @@
 	            	<a href="{% url 'post-create' %}">New Post</a>
 	            </li>
 	          </ul>
+	          <br>
+	          	{% load load_side %}
+	          	{% load_side_posts as posts_nopag %}
+	          	{% for post in posts_nopag reversed %}
+				    <!-- { url 'post-detail' post.id %}  
+				    = vastaava kuin urls.py:    path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail')
+				    = esim /post/3/ -->
+				    <small><a class="text-muted" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></small><br>
+	
+				{% endfor %}
+
 	        </p>
 	      </div>
 	    </div>

@@ -1,0 +1,13 @@
+{% extends "blog/base.html" %}
+{% block sidetitles %}
+<small>TÄÄ teksti näkyy sivulla .com/post-side, mutta ei base.html kautta homessa</small>
+	{% for post in posts %}
+		
+	    <!-- { url 'post-detail' post.id %}  
+	    = vastaava kuin urls.py:    path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail')
+	    = esim /post/3/ -->
+	    <small><a class="text-muted" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></small><br>
+	
+	{% endfor %}
+
+{% endblock sidetitles %}

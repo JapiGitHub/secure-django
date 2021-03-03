@@ -58,7 +58,7 @@ def home(request):
 class PostListView(ListView):
 	model = Post
 	
-	#default template naming millä ajango etsii:
+	#default template naming millä django etsii:
 	# <app>/<model>_<viewtype>.html
 	# blog/post_list.html
 	# template_name voi määrittää sen erikseen ettei yritä etsiä tota post_list.html
@@ -71,12 +71,44 @@ class PostListView(ListView):
 	#-dated_posted  newest up
 	ordering = ['-date_posted']
 
+
+	#ei tarvi edes importtaa paginatoria, kun ollaan class based viewsissä, ni riittää vaan paginate_by = ...
 	#sivuttaa postaukset ettei kaikki ole allekkain.
 	#pelkällä tällä jo toimii sivutus, mutta et pääse sivuille
 	#muutakuin kirjoittamalla itse queryn URLiin:
 	# http://127.0.0.1:8000/?page=2
 	#sivunapit on home.html:ssä
 	paginate_by = 7
+
+
+
+def homeViews(request):
+	class PostListView(ListView):
+		model = Post
+
+		template_name = 'blog/home.html'
+
+		context_object_name = 'posts'
+
+		ordering = ['-date_posted']
+
+		paginate_by = 7
+
+
+
+
+	context = {
+		'posts' : Post.objects.all(),
+		'postsnp': Post.objects.all()
+	}
+
+	return render(request, 'blog/home.html', context)
+
+
+
+
+
+
 
 class UserPostListView(ListView):
 	model = Post
@@ -161,3 +193,6 @@ def admin(request):
 
 def ctf(request):
 	return render(request, 'blog/ctf.html', {'title':'CTF'})
+
+def post_side(request):
+	return render(request, 'blog/post-side.html')
