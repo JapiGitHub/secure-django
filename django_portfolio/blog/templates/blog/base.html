@@ -79,6 +79,12 @@
 	            </li>
 	          </ul>
 	          <br>
+	          	<!-- postausten saaminen tähän oli haasteellista, koska ListView classin kautta tulee jo posts joka on paginated.
+	          		eli jos käyttäisin sitä, niin sivubaarin otsikko linkit olisi myös paginated eli näyttäisi vain 7 viimeisintä ...
+	          		lataan siis uudestaan sen posts_nopag tähän jotta pystyn for looppaamaan niitten läpi ilman paginointia.
+	          	load tag.py
+	          	funktio as iterable variable (queryset? muistaakseni)
+	          	 -->
 	          	{% load load_side %}
 	          	{% load_side_posts as posts_nopag %}
 	          	{% for post in posts_nopag reversed %}

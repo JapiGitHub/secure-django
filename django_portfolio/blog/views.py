@@ -41,6 +41,7 @@ posts = [
 #class basedissa just setting some variables, mutta 
 #function basedissa viewssa had to actually render a function ja tarkalleen kertoa miten renderoida
 
+''' VANHA FUNNTION BASED HOME VIEW
 def home(request):
 	#context = dictionary mikä ottaa ton posts listan vastaan (sis dictionaryja postauksista)
 	#key = 'posts'   ja value on se lista niistä postauksista
@@ -53,6 +54,7 @@ def home(request):
 	#kuin että load, render and pass it to HttpResponse
 	#render(x,x,context) kolmas argumentti context = you can pass information to home.html
 	return render(request, 'blog/home.html', context)
+'''
 
 #class based view: 
 class PostListView(ListView):
@@ -80,21 +82,25 @@ class PostListView(ListView):
 	#sivunapit on home.html:ssä
 	paginate_by = 7
 
+	postsnopag = {
+		'postsnp':Post.objects.all()
+	}
 
 
+'''
 def homeViews(request):
 	class PostListView(ListView):
 		model = Post
-
 		template_name = 'blog/home.html'
-
 		context_object_name = 'posts'
-
 		ordering = ['-date_posted']
-
 		paginate_by = 7
 
-
+	context = {
+		
+		,
+		'postsnp': Post.objects.all()
+	}
 
 
 	context = {
@@ -103,7 +109,7 @@ def homeViews(request):
 	}
 
 	return render(request, 'blog/home.html', context)
-
+'''
 
 
 
