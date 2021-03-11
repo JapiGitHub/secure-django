@@ -17,6 +17,9 @@
     <!-- static statement generates absolute URL for static files -->
     <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
 
+    <!-- parallax scrollerin css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
+
 	{% if title %}
 		<title>Random Security notes - {{ title }}</title>
 	{% else %}
@@ -25,9 +28,9 @@
 </head>
 <body>
 	<header class="site-header">
-	  <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+	  <nav class="navbar navbar-expand-lg navbar-dark bg-steel fixed-top">
 	    <div class="container">
-	      <a class="navbar-brand mr-4" href="{% url 'blog-home' %}">Rnd SecNotes</a>
+	      <a class="navbar-brand mr-4" href="{% url 'blog-home' %}">RandomSecurityNotes(){</a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
 	      <span class="navbar-toggler-icon"></span>
 	      </button>
@@ -38,7 +41,6 @@
 	          <a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a>
 		  	  <a class="nav-item nav-link" href="{% url 'blog-to-do' %}">To-Do</a>
 		  	  <a class="nav-item nav-link" href="{% url 'blog-gitlog' %}">Git Log</a>
-		  	  <a class="nav-item nav-link text-monospace" href="{% url 'admin' %}">admin</a>
 	        </div>
 	        <!-- Navbar Right Side -->
 	        <div class="navbar-nav">
@@ -46,15 +48,50 @@
 	          {% if user.is_authenticated %}
 	          	<a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
 	          	<a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+	          	<a class="nav-item nav-link text-monospace" href="{% url 'admin' %}">.admin</a>
 	          {% else %}
 		        <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
 		        <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+		        <a class="nav-item nav-link text-monospace" href="{% url 'admin' %}">.admin</a>
+
 		      {% endif %}
 	        </div>
+	        <div class="navbar-brand ml-4" href="#"> }</div>
 	      </div>
 	    </div>
 	  </nav>
 	</header>
+	<!-- parallax scroller -->
+	{% if request.get_full_path == "/" %}
+		<section>
+			<h1 id="text">Security notes</h1>
+			<img src="media/galaxy.rota2.jpg" id="galaxy">
+			<img src="media/deathstar.png" id="deathstar">
+			<img src="media/mountain.hires3.png" id="mountain">
+			<img src="media/land.fog.png" id="foggy">
+		</section>
+		<script type="text/javascript">
+			let galaxy = document.getElementById("galaxy");
+			let deathstar = document.getElementById("deathstar");
+			let mountain = document.getElementById("mountain");
+			let foggy = document.getElementById("foggy");
+			let text = document.getElementById("text");
+
+			console.log("death star imminent ...")
+
+			window.addEventListener('scroll', function(){
+				var ScrollValue = window.scrollY;
+
+				console.log(ScrollValue)
+
+				galaxy.style.top = ScrollValue * 0.4 + 'px';
+				deathstar.style.left = -ScrollValue * 1.5 + 'px';
+				mountain.style.top = ScrollValue * 0.7 + 'px';
+				foggy.style.top = ScrollValue * 0.5 + 'px';
+				text.style.top = ScrollValue * 0.65 + 'px';
+			})
+		</script>
+	{% endif %}
 	<main role="main" class="container">
 	  <div class="row">
 	    <div class="col-md-8">
@@ -72,13 +109,11 @@
 	    <div class="col-md-4">
 	      <div class="content-section">
 	        <h3>Controls</h3>
-	        <p class='text-muted'>Posts
-	          <ul class="list-group">
-	            <li class="list-group-item list-group-item-light">
-	            	<a href="{% url 'post-create' %}">New Post</a>
-	            </li>
-	          </ul>
-	          <br>
+	        <p class='text-muted'>Posts<br>
+	          
+	          <a class="btn btn-secondary mb-1" href="{% url 'post-create' %}">New Post</a>
+
+	          <br><br>
 	          	<!-- postausten saaminen tähän oli haasteellista, koska ListView classin kautta tulee jo posts joka on paginated.
 	          		eli jos käyttäisin sitä, niin sivubaarin otsikko linkit olisi myös paginated eli näyttäisi vain 7 viimeisintä ...
 	          		lataan siis uudestaan sen posts_nopag tähän jotta pystyn for looppaamaan niitten läpi ilman paginointia.
@@ -91,7 +126,7 @@
 				    <!-- { url 'post-detail' post.id %}  
 				    = vastaava kuin urls.py:    path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail')
 				    = esim /post/3/ -->
-				    <small><a class="text-muted" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></small><br>
+				    <small><a class="btn btn-secondary mb-1" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></small><br>
 	
 				{% endfor %}
 

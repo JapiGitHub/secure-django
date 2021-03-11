@@ -73,7 +73,6 @@ class PostListView(ListView):
 	#-dated_posted  newest up
 	ordering = ['-date_posted']
 
-
 	#ei tarvi edes importtaa paginatoria, kun ollaan class based viewsissä, ni riittää vaan paginate_by = ...
 	#sivuttaa postaukset ettei kaikki ole allekkain.
 	#pelkällä tällä jo toimii sivutus, mutta et pääse sivuille

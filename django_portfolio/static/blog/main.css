@@ -1,11 +1,16 @@
+
 body {
   background: #fafafa;
-  color: #333333;
+  color: #fff;
   margin-top: 5rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #444444;
+  color: #fff;
+}
+
+.text-muted {
+  color: #fff;
 }
 
 ul {
@@ -14,6 +19,7 @@ ul {
 
 .bg-steel {
   background-color: #5f788a;
+  z-index: 10001;
 }
 
 .site-header .navbar-nav .nav-link {
@@ -29,7 +35,7 @@ ul {
 }
 
 .content-section {
-  background: #ffffff;
+  background: #0a2a43;
   padding: 10px 20px;
   border: 1px solid #dddddd;
   border-radius: 3px;
@@ -37,7 +43,7 @@ ul {
 }
 
 .article-title {
-  color: #444444;
+  color: #fff;
 }
 
 a.article-title:hover {
