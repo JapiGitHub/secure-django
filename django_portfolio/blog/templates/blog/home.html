@@ -1,8 +1,10 @@
 {% extends "blog/base.html" %}
 {% block content %}
+{% load static %}
 <!-- extends = hae pohja/runko html sivuun base.html:stä ja liitä alla oleva
 koodi   block content ... endblock   kohtaan  -->
-
+    <!-- parallax scrollerin css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
 
 
 	<!--  posts = views.py -> home(request) -> context/posts 'KEY': in dictionary  

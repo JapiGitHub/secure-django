@@ -1,38 +1,99 @@
 {% extends "blog/base.html" %}
 {% block content %}
-	<h1 class="mr-2">Secure Django portfolio</h1>
-	<small class="text-muted">By Janne K</small>
+{% load static %}
+    <!-- cards ui css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/card.ui.css' %}">
 
-	<p class="article-title">
-		Things used in this project :<br>
-		<br>
-		<b>Git + GitHub</b> <a href="https://github.com/JapiGitHub/secure-django">Secure-Django GitHub</a><br>
-		<b>domain</b> MacKorkee.com<br>
-		<b>HTTPS & TLS/SSL-certificate</b> with letsencrypt.org and certbot (also cron for automatic renewal)<br>
-		<b>Linode</b> cloud server only accessible by keys (4096 bit), not with passwords.<br>
-		<b>VNC server</b> and remmina for desktop access. for sublime text etc<br>
-		<b>Apache</b> web server<br>
-		<b>venv</b> virtualenvironment<br>
-		<b>Django</b> web framework<br>
-		<b>Sqreen</b> adds more security against OWASP top 10 etc.<br>
-		<b>ufw</b> firewall<br>
-		<b>Google</b> account for users password resetings via gmail. rDNS jo valmiina.<br>
-		<br>
-		<b>Python</b><br>
-		<b>CSS & JavaScript</b> for bootstrap4 and effects<br>
-		<b>decouple/.env</b> for settings.py sensitive data decoupling.<br>
-		<b>HTML</b><br>
-		<b>SQLite3</b> for Django databases.<br>
-		<b>Linux shell</b> a lot...<br>
-		<br>
-		<!--
-		<b>Pentest tools poked at site:</b><br>
-		<b>nmap</b> for scanning<br>
-		<b>nc</b> netcat for scanning<br>
-		<b>wireshark</b> for listening/sniffing network traffic<br>
-		<b>gobuster</b> for dir enumerating or site listing<br>
-		<b>linpeas</b> "privilege escalation awesome scripts" does huge list of tests and point out vulns for you to check!<br>
-		<b>enum4linux</b> scanning is pointless because of key login<br>
-	-->
-	</p>
+	<h1 class="aboutTitle">Things used in this project or just me bragging...</h1>
+	<br>
+
+	<main>
+		<table style="width:100%; height: 700px;">
+			<tr>
+				<th>
+					<div class="box">
+						<div class="imgBx">
+							<img src="{% static 'linode.png' %}">
+						</div>
+						<div class="content">
+							<h2>Linode<br><span> for cloud server</span></h2>
+						</div>
+						<!-- tämän jäkeen tulee turha rivinvaihto -->
+					</div>
+				</th>
+				<th>
+					<div class="box bxApache">
+						<div class="imgBx">
+							<img class="cards" src="{% static 'apache.png' %}">
+						</div>
+						<div class="content">
+							<h2>Apache<br><span> for webserver</span></h2>
+						</div>
+					</div>
+				</th>
+				<th>
+					<div class="box bxCss">
+						<div class="imgBx">
+							<img src="{% static 'css.png' %}">
+						</div>
+						<div class="content">
+							<h2>CSS<br><span> for styling and effects</span></h2>
+						</div>
+					</div>
+				</th>
+				<th>
+					<div class="box bxJs">
+						<div class="imgBx">
+							<img src="{% static 'js.png' %}">
+						</div>
+						<div class="content">
+							<h2>JavaScript<br><span> for styling and effects</span></h2>
+						</div>
+					</div>
+				</th>
+			</tr>
+			<tr>
+				<th>
+					<div class="box bxHtml">
+						<div class="imgBx">
+							<img src="{% static 'html.png' %}">
+						</div>
+						<div class="content">
+							<h2>HTML<br><span> for &lt;youknow&gt; </span></h2>
+						</div>
+					</div>
+				</th>
+				<th>
+					<div class="box bxPython">
+						<div class="imgBx">
+							<img src="{% static 'python.png' %}">
+						</div>
+						<div class="content">
+							<h2>Python<br><span> for Django web framework, venv, pip ...</span></h2>
+						</div>
+					</div>
+				</th>
+				<th>
+					<div class="box bxDjango">
+						<div class="imgBx">
+							<img src="{% static 'django.350.png' %}">
+						</div>
+						<div class="content">
+							<h2>Django<br><span> for framework</span></h2>
+						</div>
+					</div>
+				</th>
+				<th>
+					<div class="box bxEtc">
+						<div class="imgBx">
+							<img src="{% static 'etc.png' %}">
+						</div>
+						<div class="content">
+							<h2>Also starring<br><span> in this project or me just showing off</span></h2>
+						</div>
+					</div>
+				</th>
+			</tr>
+		</table>
+	</main>
 {% endblock content %}

@@ -1,15 +1,17 @@
 {% extends "blog/base.html" %}
 {% block content %}
-        <h1 class="mr-2">Secure Django portfolio</h1>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
+        <h1 class="mr-2">To-Do List : </h1>
         <small class="text-muted">By Janne K</small>
 
         <p class="article-title">
-        To-Do List:<br>
 		<br>
 		<b>gmail</b> password reseting working again!<br>
-		<b>containerize</b><br>
 		<b>Sqreen</b> pitää saada taas toimimaan takaisin. muista vaihtaa myös passut<br>
-		<b>CI/CD</b><br>
+		<br>
+		<b>containerize</b><br>
+		<b>CI/CD</b> jenkins tai joku<br>
 		<b></b><br>
         </p>
 {% endblock content %}
