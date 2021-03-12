@@ -3,7 +3,7 @@
 body
 {
 	color: #fff;
-	background: #0a2a43;
+	background: linear-gradient(171deg, rgba(10,42,67,1) 0%, rgba(9,71,121,1) 35%, rgba(169,190,194,1) 100%);
 	min-height: 1500px;
 }
 

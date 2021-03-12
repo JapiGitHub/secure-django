@@ -7,6 +7,12 @@
 	<!-- favicon eli sivun iconi -->
 	<link rel="shortcut icon" href="{% static 'favicon.ico' type='image/x-icon' %}">
 	
+	<!-- meta tags for open graph linkitykseen näkyviin "thumbnaileihin" -->
+	<meta property="og:title" content="Rndm Sec Notes" />
+	<meta property="og:description" content="Welcome to the darkside. Security notes and CTF" />
+	<meta property="og:image" content="{% static 'og.image.jpg' %}" />
+	<meta property="og:sitename" content="MacKorkee.com" />
+
 	<!-- BOOTSTRAP  -->
 	<!-- Required meta tags -->
     <meta charset="utf-8">
@@ -96,7 +102,7 @@
 	{% endif %}
 
 
-	<main role="main" class="container">
+	<main role="main" class="container ">
 	  <div class="row bigDiv">
 	    <div class="col-md-8">
 	      {% if messages %}
@@ -114,11 +120,9 @@
 	    <!-- ei näyä sidepalkkia about sivuilla jossa sitä ei tarvita: about, login, register -->
 	    {% if request.get_full_path != "/about/" and request.get_full_path != "/login/" and request.get_full_path != "/register/" %}
 		    <div class="col-md-4">
-		      <div class="content-section">
-		        <h3>Controls</h3>
-		        <p class='text-muted'>Posts<br>
+		      <div class="content-section sivupalkki">
 		          
-		          <a class="btn btn-secondary mb-1" href="{% url 'post-create' %}">New Post</a>
+		          <a class="btn btn-secondary newPostButt btnSlide" href="{% url 'post-create' %}">CREATE NEW POST</a>
 
 		          <br><br>
 		          	<!-- postausten saaminen tähän oli haasteellista, koska ListView classin kautta tulee jo posts joka on paginated.
@@ -133,7 +137,7 @@
 					    <!-- { url 'post-detail' post.id %}  
 					    = vastaava kuin urls.py:    path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail')
 					    = esim /post/3/ -->
-					    <small><a class="btn btn-secondary mb-1" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></small><br>
+					    <small><a class="btn btn-secondary mb-1 PostButt btnSlide" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></small><br>
 		
 					{% endfor %}
 

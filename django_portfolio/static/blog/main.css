@@ -1,25 +1,120 @@
 
 body {
-  background: #0a2a43;
+  
+  background: linear-gradient(171deg, rgba(10,42,67,1) 0%, rgba(9,71,121,1) 35%, rgba(163,188,200,1) 62%, rgba(169,190,194,1) 100%);
+  background-attachment: fixed;
   color: #fff;
-  margin-top: 5rem;
+  margin-top: 3rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
   color: #fff;
 }
 
+
+/* shiney css button */
+.btnSlide {
+  border: none;
+  text-transform: uppercase;
+  outline: none;
+  /* overflow hidden = ei näytä slide palikkaa kyseisen napin ulkopuolelta */
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  background-color: #0a2a43;
+  padding: 9px 20px;
+  margin: 1px auto;
+}
+
+.btnSlide::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 490%;
+  width: 300%;
+  background: rgba(255,255,255,0.2);
+  -webkit-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+  -webkit-transform: translateX(-90%) translateY(-25%) rotate(45deg);
+  transform: translateX(-90%) translateY(-25%) rotate(45deg);
+}
+
+.btnSlide:hover::after {
+  -webkit-transform: translateX(-9%) translateY(-125%) rotate(45deg);
+  transform: translateX(-9%) translateY(-125%) rotate(45deg);
+}
+
+
+
+
+
+.postauthor {
+  color: #c4d6eb;
+}
+
+.gitlog {
+  padding: 15px;
+  font-family: 'Lucida Console', monospace;
+  background-color: Black; 
+  color: green;
+  margin-bottom: 0px;
+}
+
+.postaus {
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+
+.sivupalkki {
+  margin-top: 20px;
+}
+
+.newPostButt {
+  margin-left:10px;
+  margin-top: 18px;
+  margin-bottom: 21px;
+  float: right;
+  color: #dddddd;
+  background-color: #284861;
+}
+.newPostButt:hover {
+  margin-left:10px;
+  margin-top: 18px;
+  margin-bottom: 21px;
+  float: right;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
+  transition: 0.3s;
+  color: #fff;
+  background-color: #000;
+}
+
+.PostButt {
+  margin-left:10px;
+  color: #dddddd;
+  background-color: #284861;
+}
+.PostButt:hover {
+  margin-left:10px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
+  transition: 0.3s;
+  color: #fff;
+  background-color: #000;
+}
+
+
+.otsikkoetc {
+  margin-top: 30px;
+}
+
 .bigDiv {
-  height: 12500px;
+  height: 100%;
 }
 
 .gitCommit {
   color:grey;
 }
 
-.btn-secondary {
-  background-color: #5f788a;
-}
 
 .text-muted {
   color: #fff;
@@ -30,7 +125,7 @@ ul {
 }
 
 .bg-steel {
-  background-color: #5f788a;
+  background-color: #284861;
   z-index: 10001;
 }
 
@@ -48,10 +143,11 @@ ul {
 
 .content-section {
   background: #0a2a43;
-  padding: 10px 20px;
+  padding: 5px 5px;
   border: 1px solid #dddddd;
   border-radius: 3px;
   margin-bottom: 20px;
+  padding-right: 20px;
 }
 
 .article-title {
@@ -80,7 +176,7 @@ a.article-title:hover {
 }
 
 .article-metadata a:hover {
-  color: #333;
+  color: #fff;
   text-decoration: none;
 }
 

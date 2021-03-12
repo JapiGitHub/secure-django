@@ -14,11 +14,11 @@ koodi   block content ... endblock   kohtaan  -->
 	dummydata on nyt views.py tiedostossa
 	FOR looppi käy kaikki sivulla olevat postaukset läpi-->
 	{% for post in posts %}
-		<article class="media content-section">
+		<article class="media content-section postaus">
 		  <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
 		  <div class="media-body">
 		    <div class="article-metadata">
-		      <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
+		      <a class="mr-2 postauthor" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
 		      <!-- https://docs.djangoproject.com/en/3.0/ref/templates/builtins/#date 
 				post.date_posted                default     Feb. 11, 2021, 10:31 a.m.
 				post.date_posted|date:"j.n.Y"   filter      11.2.2021

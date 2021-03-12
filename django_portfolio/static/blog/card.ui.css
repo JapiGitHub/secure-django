@@ -10,7 +10,8 @@ body
 	align-items: top;
 	flex-wrap: wrap;
 	min-height: 100vh;
-	background: #0a2a43;
+ 	
+  	background: linear-gradient(171deg, rgba(10,42,67,1) 0%, rgba(9,71,121,1) 35%, rgba(169,190,194,1) 100%);
 	color: #ffffff;
 	margin: 0;
 	padding: 0;
@@ -102,7 +103,7 @@ img
 	bottom: -2px;
 	background: #fff;
 	z-index: -2;
-	filter: blur(20px);
+	filter: blur(17px);
 }
 
 /* linode */
