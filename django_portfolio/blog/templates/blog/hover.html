@@ -1,0 +1,89 @@
+
+{% load static %}
+{% block content %}
+
+<head>
+		<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="stylesheet" type="text/css" href="{% static 'blog/hover.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'blog/pageChange.css' %}">
+</head>
+<body>
+
+	
+	<div class="collisionBox">
+		<div class="baseCard">
+			<div class="plate">
+				<div class="circle"></div>
+				<img src="{% static 'blog/light.combo.png' %}" alt="light">
+			</div>
+			<div class="detailContainer">
+				<div class="info ">
+					<h1 class="force-title">LIGHT SIDE</h1>
+					<h3>"May the stackOverFlow be with you" #OSI-layers #Apache #Linode #venv #git #gitHub #SQLite3 #vnc #sublimeText #namecheap #https-certs #ufw</h3>
+				</div>
+
+				<div class=" ">
+					<button id="likeButton" class="iLikeButt">Yes Please!</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	
+	<div class="collisionBox2 collisionBox">
+		<div class="baseCard2 baseCard">
+			<div class="plate2 plate">
+				<div class="circle2"></div>
+				<img src="{% static 'blog/combo.dark.png' %}" alt="dark">
+			</div>
+			<div class="detailContainer">
+				<div class="info2 info">
+					<h1 class="force-title">DARK SIDE</h1>
+					<h3>"Unlimited power!" #CTF #nmap #enum4linux #gobuster #burpsuite #metasploit #meterpreter #nikto #Bash</h3>
+				</div>
+
+				<div class=" ">
+					<button id="likeButton2" class="iLikeButt">Join me ...</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+
+
+
+	<div class="intro">
+		<div class="intro-text">
+			<h1 class="hide">
+				<span class="text">Imegine</span>
+			</h1>
+			<h1 class="hide">
+				<span class="text">These could be</span>
+			</h1>
+			<h1 class="hide">
+				<span class="text">Your products!</span>
+			</h1>
+		</div>
+	</div>
+
+	<div class="slider"></div>
+
+	<!-- gsap animation lkibrary for JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+
+	<script type="text/javascript" src="{% static 'blog/change.js' %}"></script>
+
+
+
+
+
+	<script type="text/javascript" src="{% static 'blog/hover.js' %}"></script>
+
+
+</body>
+{% endblock content %}

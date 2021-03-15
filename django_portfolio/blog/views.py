@@ -199,5 +199,8 @@ def admin(request):
 def ctf(request):
 	return render(request, 'blog/ctf.html', {'title':'CTF'})
 
+def light(request):
+	return render(request, 'blog/hover.html', {'title':'Balance of the force'})
+
 def post_side(request):
 	return render(request, 'blog/post-side.html')

@@ -48,6 +48,7 @@
 	          <a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a>
 		  	  <a class="nav-item nav-link" href="{% url 'blog-to-do' %}">To-Do</a>
 		  	  <a class="nav-item nav-link" href="{% url 'blog-gitlog' %}">Git Log</a>
+		  	  <a class="nav-item nav-link" href="{% url 'blog-light' %}">Light Side</a>
 	        </div>
 	        <!-- Navbar Right Side -->
 	        <div class="navbar-nav">
@@ -73,10 +74,10 @@
 	<!-- parallax scroller -->
 		<section class="parallax">
 			<h1 id="text">Security notes</h1>
-			<img src="media/galaxy.rota2.jpg" id="galaxy">
-			<img src="media/deathstar.png" id="deathstar">
-			<img src="media/mountain.hires3.png" id="mountain">
-			<img src="media/land.fog.png" id="foggy">
+			<img src="media/galaxy.bw.jpg" id="galaxy">
+			<img src="media/deathstar.bw.png" id="deathstar">
+			<img src="media/mountain.bw.png" id="mountain">
+			<img src="media/land.fog.bw.png" id="foggy">
 		</section>
 		<script type="text/javascript">
 			let galaxy = document.getElementById("galaxy");
@@ -117,8 +118,8 @@
 	      {% block content %}{% endblock %}
 	    </div>
 
-	    <!-- ei näyä sidepalkkia about sivuilla jossa sitä ei tarvita: about, login, register -->
-	    {% if request.get_full_path != "/about/" and request.get_full_path != "/login/" and request.get_full_path != "/register/" %}
+	    <!-- ei näyä sidepalkkia about sivuilla jossa sitä ei tarvita: about, login, register, light -->
+	    {% if request.get_full_path != "/about/" and request.get_full_path != "/login/" and request.get_full_path != "/register/" and request.get_full_path != "/light/" %}
 		    <div class="col-md-4">
 		      <div class="content-section sivupalkki">
 		          

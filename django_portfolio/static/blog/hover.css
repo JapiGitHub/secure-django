@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+
+*{
+	margin: 0;
+	padding-left: 0;
+	box-sizing: border-box;
+}
+
+body {
+	/* perspective = fov = eli pienempinum = quakenäkymä*/
+	perspective: 1000px;
+	font-family: 'DotGothic16', sans-serif;
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+		background: linear-gradient(
+		-60deg,
+		rgba(255,255,255,0.75),
+		rgba(220,220,240,0.75)
+		);
+}
+
+.force-title {
+	color: #000;
+}
+
+.iLikeButt {
+	margin-left: 2rem;
+	padding: 2rem 2rem;
+	width: 15rem;
+	outline: none;
+	border-style: none;
+	background: none;
+	border-radius: 50px;
+	box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+	cursor: pointer;
+	font-weight: bold;
+	transition: all 0.5s ease-out;
+	font-size: 1.5rem;
+	font-family: 'DotGothic16', sans-serif;
+}
+
+
+.detailContainer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.test {
+	max-width: 40%;
+	background: rgba(100,100,200,0.3);
+}
+
+.test2 {
+	max-width: 60%;
+	background: rgba(200,100,100,0.3);
+}
+
+
+.collisionBox {
+	width: 30%;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	margin: 5%;
+}
+
+.baseCard {
+	/* tarsnstyle presever 3d mahdollistaa z indexin */
+	transform-style: preserve-3d;
+	min-height: 40vh;
+	width: 40rem;
+	border-radius: 30px;
+	padding: 0rem 2rem;
+	box-shadow: 0 20px 20px rgba(0,0,0,0.2), 0px 0px 50px rgba(0,0,0,0.2);
+}
+
+.plate {
+	min-height: 35vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.plate img {
+	transition: all 0.5s ease-out;
+	width: 20rem;
+	z-index: 2;
+}
+
+.circle {
+	width: 25rem;
+	height: 25rem;
+	border-radius: 50%;
+	background: linear-gradient(
+		180deg,
+		rgba(0,0,0,0.0),
+		rgba(48,169,220,0.05),
+		rgba(48,169,220,0.75)
+		
+		);
+	position: absolute;
+	z-index: 1;
+}
+
+.circle2 {
+	width: 25rem;
+	height: 25rem;
+	border-radius: 50%;
+	background: linear-gradient(
+		180deg,
+		rgba(0,0,0,0.0),
+		rgba(200,0,0,0.05),
+		rgba(200,0,0,0.75)
+		);
+	position: absolute;
+	z-index: 1;
+}
+
+.info h1 {
+	transition: all 0.5s ease-out;
+	font-size: 3rem;
+}
+
+.info h3 {
+	transition: all 0.5s ease-out;
+	font-size: 1.3rem;
+	padding: 2rem 0rem;
+	color: #575757;
+	font-weight: lighter;
+}
+
+
+
