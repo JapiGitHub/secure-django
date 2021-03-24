@@ -49,8 +49,8 @@ koodi   block content ... endblock   kohtaan  -->
 		https://docs.djangoproject.com/en/3.1/topics/pagination/
 		eli jos sivulla on edeltäjä niin linkki first sivulle on näkyvissä -->
 		{% if page_obj.has_previous %}
-			<a class="btn btn-secondary mb-4" href="?page=1">First</a>
-			<a class="btn btn-secondary mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+			<a class="btn btn-secondary mb-4 btnSlideSmall" href="?page=1">First</a>
+			<a class="btn btn-secondary mb-4 btnSlideSmall" href="?page={{ page_obj.previous_page_number }}">Previous</a>
 		{% endif %}
 
 		<!-- käy läpi sivut ja printtaa lähimmät klikattaviksi -->
@@ -61,14 +61,14 @@ koodi   block content ... endblock   kohtaan  -->
 			<!-- jos sivu missä looppaamme on 3 +/- current page, niin printtaa se 
 				ei voi miinustaa, niin sen takia add -3 -->
 			{% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-				<a class="btn btn-secondary mb-4" href="?page={{ num }}">{{ num }}</a>
+				<a class="btn btn-secondary mb-4 btnSlideSmall" href="?page={{ num }}">{{ num }}</a>
 			{% endif %}
 		{% endfor %}
 
 		<!-- jos on seuraavia sivuja, niin näytä myös next ja last page linkit -->
 		{% if page_obj.has_next %}
-			<a class="btn btn-secondary mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
-			<a class="btn btn-secondary mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+			<a class="btn btn-secondary mb-4 btnSlideSmall" href="?page={{ page_obj.next_page_number }}">Next</a>
+			<a class="btn btn-secondary mb-4 btnSlideSmall" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
 		{% endif %}
 	{% endif %}
 

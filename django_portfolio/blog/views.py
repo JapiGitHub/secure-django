@@ -81,9 +81,6 @@ class PostListView(ListView):
 	#sivunapit on home.html:ssä
 	paginate_by = 7
 
-	postsnopag = {
-		'postsnp':Post.objects.all()
-	}
 
 
 '''

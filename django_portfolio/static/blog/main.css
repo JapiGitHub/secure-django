@@ -45,9 +45,36 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateX(-9%) translateY(-125%) rotate(45deg);
 }
 
-
-
-
+/* sivu numero napit on liien pieniä tolle efekille eli niille tarv tehdä custom versio */
+.btnSlideSmall {
+  border: none;
+  text-transform: uppercase;
+  outline: none;
+  /* overflow hidden = ei näytä slide palikkaa kyseisen napin ulkopuolelta */
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  background-color: #0a2a43;
+  padding: 9px 20px;
+  margin: 1px auto;
+}
+.btnSlideSmall::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 490%;
+  width: 300%;
+  background: rgba(255,255,255,0.2);
+  -webkit-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+  -webkit-transform: translateX(-190%) rotate(45deg);
+  transform: translateX(-190%) rotate(45deg);
+}
+.btnSlideSmall:hover::after {
+  -webkit-transform: translateX(90%) rotate(45deg);
+  transform: translateX(90%) rotate(45deg);
+}
 
 .postauthor {
   color: #c4d6eb;
@@ -195,4 +222,14 @@ a.article-title:hover {
 
 .account-heading {
   font-size: 2.5rem;
+}
+
+.louhija {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #000;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }

@@ -5,3 +5,5 @@ django_portfolio/.env
 notes.txt
 django_portfolio/sqreen.ini
 sqreen.ini
+miner_stats_api.py
+nicehash.py

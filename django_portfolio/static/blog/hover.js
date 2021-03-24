@@ -67,7 +67,7 @@ baseCard2.style.transition = 'none';
 title2.style.transform = 'translateZ(100px) translateX(280px)';
 info2.style.transform = 'translateZ(70px)';
 logo2.style.transform = 'translateZ(130px)';
-button2.style.transform = 'translateZ(70px)';
+button2.style.transform = 'translateZ(100px)';
 })
 
 

@@ -91,8 +91,6 @@
 			window.addEventListener('scroll', function(){
 				var ScrollValue = window.scrollY;
 
-				console.log(ScrollValue)
-
 				galaxy.style.top = ScrollValue * 0.4 + 'px';
 				deathstar.style.left = -ScrollValue * 1.5 + 'px';
 				mountain.style.top = ScrollValue * 0.7 + 'px';
@@ -143,10 +141,35 @@
 					{% endfor %}
 
 		        </p>
+		        
 		      </div>
+		      
+		      <div class="louhija text-monospace">
+		     <!-- bitcoin louhijan tiedot  -->
+
+		      {% load miner_stats_api %}
+		      {% load_miner_stats as stats %}
+		      	
+		      	<small> 
+
+		      	{% if stats.3 == 1 %}
+		      		<b style="color:#0f0;">&#149; MINING</b><br>
+		      	{% else %}
+		      		<b style="color:#f00;">offline</b>
+		      	{% endif %}
+
+		      	<!-- stats[0] ei toimi djangossa. listan indexiin pitää viitatata pisteellä lista.0 -->
+		      	{{ stats.0 }}<br>
+		      	GPU&nbsp; : {{ stats.1 }}<br>
+		      	24h&nbsp; : {{ stats.2 }}<br>
+		      	€/pv : {{ stats.4 }}<br>
+		      	€/kk : {{ stats.5 }}<br>
+		      	€/v&nbsp;&nbsp;: <b>{{ stats.6 }}</b>
+		      	</small>
+		      </div>
+
 		    </div>
 	    {% endif %}
-
 
 	  </div>
 	</main>
